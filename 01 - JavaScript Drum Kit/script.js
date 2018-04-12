@@ -1,4 +1,4 @@
-window.addEventListener('keydown', function(e) {
+function playSound(e) {
 
   //Check for corrosponding audio element in html file
   const audio = document.querySelector(`audio[data-key="${e.which}"]`);
@@ -9,18 +9,17 @@ window.addEventListener('keydown', function(e) {
   key.classList.add('playing');
 
   audio.currentTime = 0; //Restart audio if key hit again
-  audio.volume = 0.6; //lower volume
+  audio.volume = 0.2; //lower volume
 
   audio.play();
 
-})
+}
 
 function removeTransition(e) {
   if(e.propertyName !== 'transform') return; 
-
-  console.log(e.propertyName)
   this.classList.remove('playing'); // this refers to specific key element
 }
 
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+window.addEventListener('keydown', (e) => {playSound(e)})
