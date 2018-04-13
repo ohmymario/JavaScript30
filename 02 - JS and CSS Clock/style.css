@@ -43,4 +43,6 @@ body {
   background:black;
   position: absolute;
   top:50%;
+  transition: all 0.5s cubic-bezier(0, 1.43, 0.58, 1);
+  transform-origin: 100%; /* alter where the hand will pivot */
 }
