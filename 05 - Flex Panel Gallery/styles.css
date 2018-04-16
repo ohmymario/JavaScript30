@@ -78,7 +78,7 @@ body {
   transform: translateY(0);
 }
 
-.panel.open-active > *:first-child {
+.panel.open-active > *:last-child {
   transform: translateY(0);
 }
 
