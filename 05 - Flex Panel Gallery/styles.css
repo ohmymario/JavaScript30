@@ -65,6 +65,21 @@ body {
   justify-content: center;
   align-items: center; 
 }
+
+.panel>*:first-child {
+  transform: translateY(-100%)
+}
+
+.panel>*:last-child {
+  transform: translateY(100%)
+}
+
+.panel.open-active > *:first-child {
+  transform: translateY(0);
+}
+
+.panel.open-active > *:first-child {
+  transform: translateY(0);
 }
 
 .panel p {
