@@ -100,3 +100,17 @@ console.table(abc);
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+const transportation = data.reduce(function(obj, item) {
+
+  // Check if there is an item key already in obj
+  // set to 0 if none
+  if(!obj[item]) {
+    obj[item] = 0;
+  } 
+
+  // Increment up one and return obj
+  obj[item]++;
+  return obj
+}, {})
+
+console.log(transportation);
