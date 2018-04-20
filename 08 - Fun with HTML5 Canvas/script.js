@@ -7,17 +7,20 @@ canvas.height = window.innerHeight;
 ctx.strokeStyle = '#BADA55'; // color/gradient/patter
 ctx.lineJoin = 'round'; //type of corner when two lines meet
 ctx.lineCap = 'round'; // style of the end of line
-ctx.lineWidth = 100;
 
 let isDrawing = false; // Flag to determine if drawing to canvas
 let lastX = 0; // Begin of line
 let lastY = 0; // End of line
+let hue = 0; // keep track of colors
 
 function draw(e) {
   console.log('mousemove is working');
   if (!isDrawing) return; // if isDrawing is false|stop the function
 
   console.log(e);
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
+
+  ctx.lineWidth = hue;
 
   ctx.beginPath();
   // Start From
@@ -29,6 +32,11 @@ function draw(e) {
   // Once done with line update the last place they were at
   lastX = e.offsetX;
   lastY = e.offsetY;
+
+  hue++;
+  if(hue >= 360) {
+    hue = 0;
+  }
 
 }
 canvas.addEventListener('mousedown', (e) => {
