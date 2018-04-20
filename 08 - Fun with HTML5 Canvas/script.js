@@ -7,6 +7,7 @@ canvas.height = window.innerHeight;
 ctx.strokeStyle = '#BADA55'; // color/gradient/patter
 ctx.lineJoin = 'round'; //type of corner when two lines meet
 ctx.lineCap = 'round'; // style of the end of line
+ctx.lineWidth = 100;
 
 let isDrawing = false; // Flag to determine if drawing to canvas
 let lastX = 0; // Begin of line
