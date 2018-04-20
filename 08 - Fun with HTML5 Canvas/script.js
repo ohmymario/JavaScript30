@@ -55,5 +55,14 @@ canvas.addEventListener('mousedown', (e) => {
 });
 
 canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', () => isDrawing = false);
-canvas.addEventListener('mouseout', () => isDrawing = false);
+canvas.addEventListener('mouseup', () => {
+  isDrawing = false
+
+  ctx.lineWidth = 5;
+});
+
+canvas.addEventListener('mouseout', () => {
+  isDrawing = false
+
+  ctx.lineWidth = 5;
+});
