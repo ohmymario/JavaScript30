@@ -15,10 +15,8 @@ let hue = 0; // keep track of colors
 let direction = true; // track line width direction
 
 function draw(e) {
-  console.log('mousemove is working');
   if (!isDrawing) return; // if isDrawing is false|stop the function
 
-  console.log(e);
   ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
   ctx.beginPath();
   // Start From
