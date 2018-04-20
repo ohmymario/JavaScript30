@@ -12,6 +12,7 @@ let isDrawing = false; // Flag to determine if drawing to canvas
 let lastX = 0; // Begin of line
 let lastY = 0; // End of line
 let hue = 0; // keep track of colors
+let direction = true; // track line width direction
 
 function draw(e) {
   console.log('mousemove is working');
@@ -19,9 +20,6 @@ function draw(e) {
 
   console.log(e);
   ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
-
-  ctx.lineWidth = hue;
-
   ctx.beginPath();
   // Start From
   ctx.moveTo(lastX, lastY); 
@@ -38,6 +36,15 @@ function draw(e) {
     hue = 0;
   }
 
+ if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+    direction = !direction;
+  }
+
+  if(direction) {
+    ctx.lineWidth++;
+  } else {
+    ctx.lineWidth--;
+  }
 }
 canvas.addEventListener('mousedown', (e) => {
   isDrawing = true
