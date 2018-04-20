@@ -17,9 +17,27 @@ function draw(e) {
   if (!isDrawing) return; // if isDrawing is false|stop the function
 
   console.log(e);
+
+  ctx.beginPath();
+  // Start From
+  ctx.moveTo(lastX, lastY); 
+  // Go to
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+
+  // Once done with line update the last place they were at
+  lastX = e.offsetX;
+  lastY = e.offsetY;
+
 }
+canvas.addEventListener('mousedown', (e) => {
+  isDrawing = true
+
+  // Update where you pressed mousedown at
+  lastX = e.offsetX;
+  lastY = e.offsetY;
+});
 
 canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mousedown', () => isDrawing = true);
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
