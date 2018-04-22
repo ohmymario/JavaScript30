@@ -4,12 +4,24 @@ const checkboxes = document.querySelectorAll('.item>input[type=checkbox]');
 let lastChecked;
 
 function handleCheck(e) {
-  if(e.shiftKey === true) {
-    console.log("TRUEE")
+  let inBetween = false;
+
+  //  Check for shiftkey and checked to be true
+  if(e.shiftKey === true && this.checked) {
+    //loop over every single checkbox
+    checkboxes.forEach(checkbox => {
+      console.log(checkbox);
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+        console.log('working')
+      }
+      // Check the checkboxes
+      if(inBetween) {
+        checkbox.checked = true;
+      }
+    })
   }
-
-  console.log(this.checked)
-
+  // holds the last input checkbox clicked
   lastChecked = this;
 }
 
