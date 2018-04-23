@@ -10,12 +10,11 @@ function handleCheck(e) {
   if(e.shiftKey === true && this.checked) {
     //loop over every single checkbox
     checkboxes.forEach(checkbox => {
-      console.log(checkbox);
+      // Check if checkbox is the current one clicked or lastChecked
       if (checkbox === this || checkbox === lastChecked) {
         inBetween = !inBetween;
-        console.log('working')
       }
-      // Check the checkboxes
+      // ✓ Check the checkboxes inbetween |this and lastChecked|
       if(inBetween) {
         checkbox.checked = true;
       }
