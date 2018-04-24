@@ -28,8 +28,7 @@ function updateButton() {
 
 // Skip times refer to data-skip in element| obtain w/ this.dataset
 function skip() {
-  var skippedTime = video.currentTime + parseInt(this.dataset.skip)
-  video.currentTime = skippedTime;
+  video.currentTime += parseInt(this.dataset.skip)
 }
 
 // Add event listeners
