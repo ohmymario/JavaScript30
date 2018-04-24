@@ -26,9 +26,17 @@ function updateButton() {
   }
 }
 
+// Skip times refer to data-skip in element| obtain w/ this.dataset
+function skip() {
+  var skippedTime = video.currentTime + parseInt(this.dataset.skip)
+  video.currentTime = skippedTime;
+}
+
 // Add event listeners
 video.addEventListener('click', togglePlay)
 toggle.addEventListener('click', togglePlay)
 
 video.addEventListener('play', updateButton)
 video.addEventListener('pause', updateButton)
+
+skipButtons.forEach(button => button.addEventListener('click', skip))
