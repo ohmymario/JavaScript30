@@ -19,7 +19,6 @@ function togglePlay() {
 
 function updateButton() {
   if(this.paused) {
-    console.log("paused")
     toggle.textContent = '►';
   } else {
     toggle.textContent = '❚ ❚';
@@ -31,11 +30,30 @@ function skip() {
   video.currentTime += parseInt(this.dataset.skip)
 }
 
+// input range will give back value based on slider position
+// this.name will only change value on slider being changed
+function handleRangeUpdate() {
+  video[this.name] = this.value;
+}
+
+function handleProgress() {
+  const percent = (video.currentTime / video.duration) * 100;
+  progessBar.style.flexBasis = `${percent}%`
+}
+
 // Add event listeners
 video.addEventListener('click', togglePlay)
 toggle.addEventListener('click', togglePlay)
 
 video.addEventListener('play', updateButton)
 video.addEventListener('pause', updateButton)
+video.addEventListener('timeupdate', handleProgress)
 
 skipButtons.forEach(button => button.addEventListener('click', skip))
+
+// calls function on mousemove to continually update 
+ranges.forEach(range => range.addEventListener('click', handleRangeUpdate))
+ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate))
+
+
+
