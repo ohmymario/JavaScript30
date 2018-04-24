@@ -12,3 +12,12 @@ function debounce(func, wait = 20, immediate = true) {
     if (callNow) func.apply(context, args);
   };
 }
+
+const sliderImages = document.querySelectorAll('.slide-in')
+
+function checkslide(e) {
+  console.count(e)
+}
+
+// debounce | reduce the amount of function calls for performance
+window.addEventListener('scroll', debounce(checkslide))
