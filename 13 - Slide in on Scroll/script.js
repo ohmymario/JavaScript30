@@ -25,13 +25,6 @@ function checkslide(e) {
     // (how far scrolled down + viewport) - half of the image height
     const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
     
-    console.log("************************")
-    console.log(`innerHeight ${window.innerHeight}`);
-    console.log(`scrollY ${window.scrollY}`);
-    console.log(`scrollY + innerHeight ${(window.scrollY + window.innerHeight)}`);
-    console.log(`Image Height / 2 ${(sliderImage.height / 2)}`)
-    console.log(`slideInAt ${slideInAt}`);
-
     // Bottom of image | offsetTop = how far from top of page | height = height of image
     const imageBottom = sliderImage.offsetTop + sliderImage.height;
 
@@ -43,7 +36,7 @@ function checkslide(e) {
     } else {
       sliderImage.classList.remove('active');
     }
-    
+
   })
 }
 
