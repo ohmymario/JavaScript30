@@ -26,7 +26,7 @@ function populateList(plates = [], platesList) {
   platesList.innerHTML = plates.map((plate, i) => {
     return `
     <li>
-      <input type="checkbox" data-index="${i}" id="item${i}">
+      <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
       <label for="item${i}">${plate.text}</label>
     </li>
     `;
@@ -34,6 +34,26 @@ function populateList(plates = [], platesList) {
 
 }
 
-addItems.addEventListener('submit', addItem) 
+function toggleDone(e) {
+  // Check if correct element(input) to act upon
+  if (!e.target.matches('input')) return;
+
+  // Grab index from "data-" attribute
+  const el = e.target;
+  const index = el.dataset.index;
+
+  // Change the status on array(items) to opposite
+  // Update localStorage with new done status
+  // Repopulate the view
+  items[index].done = !items[index].done;
+  localStorage.setItem('items', JSON.stringify(items));
+  populateList(items, itemsList);
+}
+
+
+addItems.addEventListener('submit', addItem) ;
+
+// Listening for click on parent element | toggleDone checks if checkbox 
+itemsList.addEventListener('click', toggleDone);
 
 populateList(items, itemsList);
