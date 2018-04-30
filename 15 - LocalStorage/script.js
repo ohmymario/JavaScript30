@@ -2,6 +2,7 @@ const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
 const items = JSON.parse(localStorage.getItem('items')) || []; // Attempt to retrieve from localStorage first
 
+// Add users item to the Items Array
 function addItem(e) {
   e.preventDefault(); // Prevent Refresh
 
