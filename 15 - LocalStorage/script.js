@@ -6,12 +6,14 @@ const items = JSON.parse(localStorage.getItem('items')) || []; // Attempt to ret
 function addItem(e) {
   e.preventDefault(); // Prevent Refresh
 
+  // Text from input field is added to an object
   const text = this.querySelector('[name=item]').value; // refers to clicked submit buttons inputted value
   const item = {
     text, 
     done: false
   }
 
+  // Add items to array / Add to view / Add to localStorage / reset form
   items.push(item);
   populateList(items, itemsList)
   localStorage.setItem('items', JSON.stringify(items)); // 
@@ -19,7 +21,7 @@ function addItem(e) {
 
 }
 
-// default of empty array to prevent errors
+// Populates the View with User inputted data
 function populateList(plates = [], platesList) {
 
   // Create HTML | ${i} will reflect the index number
@@ -49,7 +51,6 @@ function toggleDone(e) {
   localStorage.setItem('items', JSON.stringify(items));
   populateList(items, itemsList);
 }
-
 
 addItems.addEventListener('submit', addItem) ;
 
